@@ -268,7 +268,8 @@ position:absolute;
 top:46%;
 width:100%;
 height:30%;
-background:red;
+background:white;
+
 }
 .titleImage{
 position:absolute;
