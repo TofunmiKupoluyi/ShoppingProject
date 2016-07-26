@@ -80,6 +80,20 @@ $image[4]=$rows5["Image"];
 $manufacturer[4]=$rows5["Manufacturer"];
 $category[4]= $rows5["Category"];
 }
+
+$sql6="SELECT Product_Name, Price, Image, Manufacturer, Category FROM products WHERE category='phones/tablets'
+ORDER BY Product_ID DESC";
+$result6= $connect->query($sql6);
+$myProductsRaw= Array();
+$num=0;
+if($result6->num_rows>0){
+while($rows=$result6->fetch_assoc()){
+$myProductsRaw[$num]=$rows["Manufacturer"];
+$num+=1;
+}
+$myProductsClean=array_unique($myProductsRaw);
+}
+
 ?>
 <html>
 <head>
@@ -351,10 +365,8 @@ die("unsuccesful");
 } ?>
 </table>
 
-
 <table id="fourthTable">
 <?php if($result4->num_rows>0){
-
 }
 else{
 die("unsuccesful");
@@ -363,7 +375,6 @@ die("unsuccesful");
 
 <table id="fifthTable">
 <?php if($result5->num_rows>0){
-
 }
 else{
 die("unsuccesful");
@@ -376,20 +387,10 @@ die("unsuccesful");
 <td><img class="titleImage" src="images/phonetabletimage.jpg"></img></td>
 <td><div class="brandsDiv">
 <?php
-$sql6="SELECT manufacturer FROM products WHERE category='phones/tablets'";
-$result6= $connect->query($sql6);
-$myProductsRaw= Array();
-$num=0;
-if($result6->num_rows>0){
-while($rows=$result6->fetch_assoc()){
-$myProductsRaw[$num]=$rows["manufacturer"];
-$num++;
-}
-$myProductsClean=array_unique($myProductsRaw);
-for($i=0;$i<count($myProductsClean);$i++){
-echo "<p>".$myProductsRaw[$i]."</p>";
-}
-}
+echo "<p>".$myProductsRaw[0]."</p>";
+echo "<p>".$myProductsRaw[1]."</p>";
+echo "<p>".$myProductsRaw[2]."</p>";
+echo "<p>".$myProductsRaw[3]."</p>";
 ?>
 </div></td>
 <td><table>
