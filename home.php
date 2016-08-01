@@ -91,9 +91,72 @@ while($rows=$result6->fetch_assoc()){
 $myProductsRaw[$num]=$rows["Manufacturer"];
 $num+=1;
 }
-$myProductsClean=array_unique($myProductsRaw);
 }
 
+
+$namePhonesTablets= Array();
+$pricePhonesTablets= Array();
+$imagePhonesTablets= Array();
+$manufacturerPhonesTablets= Array();
+$categoryPhonesTablets= Array();
+
+$sqlPhonesTablets1="SELECT Product_Name, Price, Image, Manufacturer, Category FROM products 
+WHERE Category='Phones/Tablets'
+ORDER BY Product_ID DESC
+LIMIT 1;";
+
+$resultPhonesTablets1=$connect->query($sqlPhonesTablets1);
+
+while($rowsPhonesTablets1= $resultPhonesTablets1->fetch_assoc()){
+$namePhonesTablets[0]=$rowsPhonesTablets1["Product_Name"];
+$pricePhonesTablets[0]=$rowsPhonesTablets1["Price"];
+$imagePhonesTablets[0]=$rowsPhonesTablets1["Image"];
+$manufacturerPhonesTablets[0]=$rowsPhonesTablets1["Manufacturer"];
+$categoryPhonesTablets[0]= $rowsPhonesTablets1["Category"];
+}
+
+$sqlPhonesTablets2="SELECT Product_Name, Price, Image, Manufacturer, Category FROM products WHERE Category='Phones/Tablets'
+ORDER BY Product_ID DESC
+LIMIT 2;";
+
+$resultPhonesTablets2=$connect->query($sqlPhonesTablets2);
+
+while($rowsPhonesTablets2= $resultPhonesTablets2->fetch_assoc()){
+$namePhonesTablets[1]=$rowsPhonesTablets2["Product_Name"];
+$pricePhonesTablets[1]=$rowsPhonesTablets2["Price"];
+$imagePhonesTablets[1]=$rowsPhonesTablets2["Image"];
+$manufacturerPhonesTablets[1]=$rowsPhonesTablets2["Manufacturer"];
+$categoryPhonesTablets[1]= $rowsPhonesTablets2["Category"];
+}
+
+$sqlPhonesTablets3="SELECT Product_Name, Price, Image, Manufacturer, Category FROM products WHERE Category='Phones/Tablets'
+ORDER BY Product_ID DESC
+LIMIT 3;";
+
+$resultPhonesTablets3=$connect->query($sqlPhonesTablets3);
+
+while($rowsPhonesTablets3= $resultPhonesTablets3->fetch_assoc()){
+$namePhonesTablets[2]=$rowsPhonesTablets3["Product_Name"];
+$pricePhonesTablets[2]=$rowsPhonesTablets3["Price"];
+$imagePhonesTablets[2]=$rowsPhonesTablets3["Image"];
+$manufacturerPhonesTablets[2]=$rowsPhonesTablets3["Manufacturer"];
+$categoryPhonesTablets[2]= $rowsPhonesTablets3["Category"];
+}
+
+
+$sqlPhonesTablets4="SELECT Product_Name, Price, Image, Manufacturer, Category FROM products WHERE Category='Phones/Tablets'
+ORDER BY Product_ID DESC
+LIMIT 4;";
+
+$resultPhonesTablets4=$connect->query($sqlPhonesTablets4);
+
+while($rowsPhonesTablets4= $resultPhonesTablets4->fetch_assoc()){
+$namePhonesTablets[3]=$rowsPhonesTablets4["Product_Name"];
+$pricePhonesTablets[3]=$rowsPhonesTablets4["Price"];
+$imagePhonesTablets[3]=$rowsPhonesTablets4["Image"];
+$manufacturerPhonesTablets[3]=$rowsPhonesTablets4["Manufacturer"];
+$categoryPhonesTablets[3]= $rowsPhonesTablets4["Category"];
+}
 ?>
 <html>
 <head>
@@ -297,8 +360,9 @@ position:absolute;
 height:100%;
 width:20%;
 top:0;
-background-color:white;
+background-color:#f2f2f2;
 left:20%;
+
 }
 .latestInfoButton{
 color:white;
@@ -314,6 +378,117 @@ border-radius:0 0 1vw 1vw;
 font-size:12;
 font-size:1vw;
 font-weight:bold;
+}
+.brandsTitleImage{
+color:white;
+position:absolute;
+width:100%;
+height:10%;
+background-color:#74e2be;
+}
+.brandsTitleText{
+
+font-size:1.2vw;
+position:absolute;
+left:40%;
+top:20%;
+}
+.brandsText{
+position:absolute;
+top:10%;
+left:10%;
+font-size:1.1vw;
+}
+.phonesTabletsLinks{
+color:black;
+text-decoration:none;
+}
+.phonesTabletsLinks:hover{
+color:red;
+}
+.buttonViewAll{
+position:absolute;
+bottom:0;
+left:0;
+color:white;
+font-size:1vw;
+background-color:#c0c0c0;
+border-style:none;
+width:100%;
+height:10%;
+}
+#phoneBrandIconImage{
+position:absolute;
+left:25%;
+top:10%;
+width:10%;
+height:60%;
+}
+#latestPhonesTablets{
+position:absolute;
+height:100%;
+width:60%;
+top:0;
+background-color:#f2f2f2;
+left:40%;
+border-left:solid;
+border-left-color:#f2f2f2;
+border-left-width:0.6vw;
+}
+.latestPhonesTabletsTabs{
+position:absolute;
+width:50%;
+top:0;
+background-color:white;
+left:0;
+border-top:solid;
+border-top-left:0;
+border-top-color:#74e2be;
+}
+#latestPhonesTabletsTab1{
+left:0;
+width:50%;
+height:100%
+}
+#latestPhonesTabletsTab2{
+left:51%;
+height:48%;
+width:24%;
+}
+#latestPhonesTabletsTab3{
+left:76%;
+height:48%;
+width:24%;
+}
+#latestPhonesTabletsTab4{
+top:51%;
+left:51%;
+height:49%;
+width:50%;
+}
+.phonesTabletsTopImage{
+position:absolute;
+width:100%;
+height:100%;
+left:0;
+top:0;
+}
+@keyframes iconHover{
+0%{opacity:100%;}
+100%{opacity:0;}
+}
+.latestPhonesTabletsInfos{
+position:absolute;
+background-color:white;
+width:100%;
+height:100%;
+top:0;
+left:0;
+}
+.latestPhonesTabletsTitle{
+position:absolute;
+top:30%;
+font-size:2vw;
 }
 </style>
 </head>
@@ -333,7 +508,7 @@ font-weight:bold;
 </div>
 <table id="firstTable">
 <?php if($result1->num_rows>0){
-echo "<tr><td><img src='images/".$image[0]."' class='recentImage'></img></td>";
+echo "<tr><td><img src='".$image[0]."' class='recentImage'></img></td>";
 echo "<td><span class='latestInfoName'>".$name[0]." - ".$manufacturer[0]." - ".$category[0]."</span></td></tr>";
 echo "<td><span class='latestInfoPrice'> &#8358; ".$price[0]." </span></td>";
 echo "<td><button class='latestInfoButton' id='latestInfoButton1'> BUY NOW </button></td></tr> ";
@@ -344,7 +519,7 @@ die("unsuccesful");
 </table>
 <table id="secondTable">
 <?php if($result2->num_rows>0){
-echo "<tr><td><img src='images/".$image[1]."' class='recentImage'></img></td>";
+echo "<tr><td><img src='".$image[1]."' class='recentImage'></img></td>";
 echo "<td><span class='latestInfoName'>".$name[1]." - ".$manufacturer[1]." - ".$category[1]."</span></td></tr>";
 echo "<td><span class='latestInfoPrice'> &#8358; ".$price[1]."</span></td></tr>";
 echo "<td><button class='latestInfoButton' id='latestInfoButton2'> BUY NOW </button></td></tr> ";
@@ -355,7 +530,7 @@ die("unsuccesful");
 </table>
 <table id="thirdTable">
 <?php if($result3->num_rows>0){
-echo "<tr><td><img src='images/".$image[2]."' class='recentImage'></img></td>";
+echo "<tr><td><img src='".$image[2]."' class='recentImage'></img></td>";
 echo "<td><span class='latestInfoName'>".$name[2]." - ".$manufacturer[2]." - ".$category[2]."</span></td></tr>";
 echo "<td><span class='latestInfoPrice'> &#8358; ".$price[2]."</span></td></tr>";
 echo "<td><button class='latestInfoButton' id='latestInfoButton3'> BUY NOW </button></td></tr> ";
@@ -386,28 +561,48 @@ die("unsuccesful");
 <tr>
 <td><img class="titleImage" src="images/phonetabletimage.jpg"></img></td>
 <td><div class="brandsDiv">
+<div class="brandsTitleImage"><img id="phoneBrandIconImage" src="images/phoneicon.png"></img><span class="brandsTitleText">Brands</span></div>
+<div class="brandsText">
 <?php
-echo "<p>".$myProductsRaw[0]."</p>";
-echo "<p>".$myProductsRaw[1]."</p>";
-echo "<p>".$myProductsRaw[2]."</p>";
-echo "<p>".$myProductsRaw[3]."</p>";
+$myProductsClean=Array();
+$myProductsClean=array_unique($myProductsRaw);
+foreach($myProductsClean as $value){
+echo "<p><a class='phonesTabletsLinks' href='phones.php?category=$value'>$value</a></p>";
+}
 ?>
+</div>
+<div class="brandsViewAll"><button class="buttonViewAll">View All</button></div>
 </div></td>
-<td><table>
-<tr>
-<td></td>
-<td>Hello</td>
-<td>Hello</td>
-<td>Hello</td>
-</tr>
-<tr>
-<td>Hello</td>
-<td>Hello</td>
-<td>Hello</td>
-<td>Hello</td>
-</tr>
-</table></td>
-</tr>
+<td><div id="latestPhonesTablets">
+<div class="latestPhonesTabletsTabs" id="latestPhonesTabletsTab1">
+<div class="latestPhonesTabletsInfos" id="latestPhonesTabletsInfo1">  </div>
+<table id='phonesTabletsFirstTable'>
+<tr><td><img class="phonesTabletsTopImage" src="images/phonetabletimage1.jpg"></img></td></tr>
+</table>
+</div>
+<div class="latestPhonesTabletsTabs" id="latestPhonesTabletsTab2">
+<div class='latestPhonesTabletsInfos' id='latestPhonesTabletsInfo2'><span class='latestPhonesTabletsTitle'><center><?php if($resultPhonesTablets2->num_rows>0){ echo $namePhonesTablets[1];} ?> </center></span>
+<span class='latestPhonesTabletsPrice'><?php if($resultPhonesTablets2->num_rows>0){ echo '&#8358;'.$pricePhonesTablets[1];} ?> </span>
+  </div>
+<table id='phonesTabletsSecondTable'>
+<tr><td><img class="phonesTabletsTopImage" src="images/phonetabletimage2.jpg"></img></td></tr>
+</table>
+</div>
+<div class="latestPhonesTabletsTabs" id="latestPhonesTabletsTab3">
+<div class="latestPhonesTabletsInfos" id="latestPhonesTabletsInfo3">   </div>
+<table id='phonesTabletsThirdTable'>
+<tr><td><img class="phonesTabletsTopImage" src="images/phonetabletimage3.jpg"></img></td></tr>
+</table>
+</div>
+
+<div class="latestPhonesTabletsTabs" id="latestPhonesTabletsTab4">
+<div class="latestPhonesTabletsInfos" id="latestPhonesTabletsInfo4">   </div>
+<table id='phonesTabletsFourthTable'>
+<tr><td><img class="phonesTabletsTopImage" src="images/phonetabletimage4.png"></img></td></tr>
+</table>
+</div>
+
+</div></td>
 </table>
 </div>
 </div>
